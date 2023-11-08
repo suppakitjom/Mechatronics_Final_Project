@@ -1,0 +1,39 @@
+.frameChild {
+  position: absolute;
+  top: 214px;
+  left: 262px;
+  border-radius: 50%;
+  width: 350px;
+  height: 190px;
+  object-fit: cover;
+}
+.pleaseInsertYour {
+  position: absolute;
+  top: 263px;
+  left: 281px;
+  display: inline-block;
+  width: 312px;
+  height: 100px;
+}
+.image1Icon {
+  position: absolute;
+  top: 169px;
+  left: 0;
+  width: 321px;
+  height: 343px;
+  object-fit: cover;
+}
+.ellipseParent {
+  position: relative;
+  width: 100%;
+  height: 625px;
+  overflow: hidden;
+  background-image: url(/public/frame-6@3x.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  text-align: center;
+  font-size: var(--font-size-21xl);
+  color: var(--text);
+  font-family: var(--font-aclonica);
+}

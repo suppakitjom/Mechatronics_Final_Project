@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Aclonica:wght@400&display=swap");
+body {
+  margin: 0;
+  line-height: normal;
+}
+:root {
+  /* fonts */
+  --font-aclonica: Aclonica;
+
+  /* font sizes */
+  --font-size-11xl: 30px;
+  --font-size-21xl: 40px;
+
+  /* Colors */
+  --text: #520505;
+
+  /* Border radiuses */
+  --br-xl: 20px;
+}

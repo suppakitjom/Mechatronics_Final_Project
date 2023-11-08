@@ -1,0 +1,63 @@
+.frameChild {
+  position: absolute;
+  top: 124px;
+  left: 13px;
+  border-radius: var(--br-xl);
+  width: 599px;
+  height: 77px;
+  object-fit: cover;
+}
+.howWouldYou {
+  position: absolute;
+  top: 138px;
+  left: 5px;
+  display: inline-block;
+  width: 615px;
+  height: 48px;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+.frameInner,
+.frameItem {
+  position: absolute;
+  top: 284px;
+  left: 85px;
+  border-radius: var(--br-xl);
+  width: 182px;
+  height: 82px;
+  object-fit: cover;
+}
+.frameInner {
+  left: 328px;
+  width: 222px;
+}
+.cash,
+.qrCode {
+  position: absolute;
+  top: 303px;
+  left: 107px;
+  display: inline-block;
+  width: 137px;
+  height: 43px;
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+.qrCode {
+  top: 306px;
+  left: 328px;
+  width: 222px;
+  height: 48px;
+}
+.rectangleParent {
+  position: relative;
+  width: 100%;
+  height: 625px;
+  overflow: hidden;
+  background-image: url(/public/frame-6@3x.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  text-align: center;
+  font-size: var(--font-size-21xl);
+  color: var(--text);
+  font-family: var(--font-aclonica);
+}

@@ -1,0 +1,31 @@
+.frameChild {
+  position: absolute;
+  top: 41px;
+  left: 35px;
+  border-radius: var(--br-xl);
+  width: 424px;
+  height: 75px;
+  object-fit: cover;
+}
+.scanToPurchase {
+  position: absolute;
+  top: 55px;
+  left: 26px;
+  display: inline-block;
+  width: 433px;
+  height: 47px;
+}
+.vectorParent {
+  position: relative;
+  width: 100%;
+  height: 625px;
+  overflow: hidden;
+  background-image: url(/public/frame-6@3x.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  text-align: center;
+  font-size: var(--font-size-21xl);
+  color: var(--text);
+  font-family: var(--font-aclonica);
+}
