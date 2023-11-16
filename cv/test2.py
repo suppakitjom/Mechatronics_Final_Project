@@ -1,16 +1,17 @@
 import cv2
 from ultralytics import YOLO
 import torch
+import requests
 # device = "cuda" if torch.cuda.is_available() else "cpu"
 # Load the YOLOv8 model
-model = YOLO('best.pt').to('mps')
-
+model = YOLO('best-n.pt')
+response = requests.get(url='http://0.0.0.0:6969/clearitems')
 # Open the video file
 video_path = "luggage.mp4"
-cap = cv2.VideoCapture(video_path)
+cap = cv2.VideoCapture(1)
 
 # Define a line for detection
-line_x_coord = 400
+line_x_coord = 800
 
 # Set to keep track of unique object IDs that crossed the line
 crossed_ids = set()
@@ -25,7 +26,7 @@ while cap.isOpened():
 
     if success:
         # Run YOLOv8 tracking on the frame, persisting tracks between frames
-        results = model.track(frame, persist=True)
+        results = model.track(frame, persist=True,conf = 0.7)
         # Check if there are detections and the id attribute is not None
         if results[0].boxes and results[0].boxes.id is not None:
             # Get the boxes, track IDs, and class names
@@ -41,6 +42,10 @@ while cap.isOpened():
                 if x_center > line_x_coord and track_id not in crossed_ids:
                     crossed_ids.add(track_id)
                     class_counts[class_name] = class_counts.get(class_name, 0) + 1
+                    try:
+                        r = requests.post(url='http://0.0.0.0:6969/add',json={"name": f"{class_name}"})
+                    except:
+                        print("Error")
                     print(f"Object ID {track_id} ({class_name}) has crossed the line.")
 
         # Visualize the results on the frame

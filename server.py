@@ -19,10 +19,16 @@ def clearitems():
     data.clear()
     return jsonify(data)
 
+
+lookup_price = {'gold': 80, 'white': 60, 'red': 40,'black':120}
+
 @app.route('/add', methods=['POST'])
 def add_data():
+    item = dict(request.json)
+    item["price"] = lookup_price[item["name"]]
+    item["quantity"] = 1
     global data
-    data.append(request.json)
+    data.append(item)
     return jsonify(data)
 
 @app.route('/order', methods=['GET'])
