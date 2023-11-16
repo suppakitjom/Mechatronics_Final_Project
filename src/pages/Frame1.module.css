@@ -38,3 +38,14 @@
   color: var(--text);
   font-family: var(--font-aclonica);
 }
+.backButton {
+  position: absolute;
+  bottom: 50px;
+  left: 510px;
+  padding: 20px;
+  background-color: #143f6d;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+}

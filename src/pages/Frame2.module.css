@@ -15,6 +15,13 @@
   width: 433px;
   height: 47px;
 }
+.QR{
+  position: absolute;
+  top: 28%;
+  left: 10%;
+  width: 300px;
+  height: 300px;
+}
 .vectorParent {
   position: relative;
   width: 100%;
@@ -28,4 +35,15 @@
   font-size: var(--font-size-21xl);
   color: var(--text);
   font-family: var(--font-aclonica);
+}
+.backButton {
+  position: absolute;
+  bottom: 50px;
+  left: 450px;
+  padding: 20px;
+  background-color: #143f6d;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
 }
