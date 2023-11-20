@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 from promptpay import qrcode
-
+from mongocode import update_revenue, update_stock
 app = Flask(__name__)
 CORS(app)
 
@@ -16,6 +16,7 @@ def generate_qr(id, amount):
 @app.route('/clearitems', methods=['GET']) 
 def clearitems():
     global data
+    update_revenue(update_stock(data))
     data.clear()
     return jsonify(data)
 
@@ -27,12 +28,6 @@ def add_data():
     item = dict(request.json)
     item["price"] = lookup_price[item["name"]]
     item["quantity"] = 1
-    global data
-    data.append(item)
-    return jsonify(data)
-
-@app.route('/order', methods=['GET'])
-def get_data():
     # data = [
     #     {"name": "test", "price": "100", "quantity": "1"},
     #     {"name": "test2", "price": "200", "quantity": "2"},
@@ -43,6 +38,19 @@ def get_data():
     #     {"name": "test2", "price": "200", "quantity": "2"},
     #     {"name": "test2", "price": "200", "quantity": "2"},
     # ]
+    global data
+    # if item with same name already exists, increase quantity and price, otherwise add new item
+
+    for i in range(len(data)):
+        if data[i]["name"] == item["name"]:
+            data[i]["quantity"] += 1
+            data[i]["price"] = int(data[i]["price"]) + int(item["price"])
+            return jsonify(data)
+    data.append(item)
+    return jsonify(data)
+
+@app.route('/order', methods=['GET'])
+def get_data():
     global data
     total_price = 0
     for item in data:
