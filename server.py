@@ -20,7 +20,7 @@ def generate_qr(id, amount):
     '''
     payload = qrcode.generate_payload(id, amount)
     img = qrcode.to_image(payload)
-    qrcode.to_file(payload, "public/qrcode.png") 
+    qrcode.to_file(payload, "src/pages/qrcode.png") 
 
 @app.route('/clearitems', methods=['GET']) 
 def clearitems():
@@ -68,4 +68,5 @@ def get_data():
     return jsonify(data)
 
 if __name__ == "__main__":
+    generate_qr('0958934433', 0)
     app.run(host='0.0.0.0', port=6969)
