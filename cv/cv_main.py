@@ -23,8 +23,11 @@ Secret = "nPKG5CD6ddontJgp8vwv7KAJFNskmGd8"
 
 MqttUser_Pass = {"username":Token,"password":Secret}
 
-# The callback for when a PUBLISH message is received from the server.
+
 def on_message(client, userdata, msg):
+    '''
+    Callback function that is called when a message is received
+    '''
     print(msg.topic+" "+str(msg.payload.decode("utf-8")))
     text=msg.payload.decode("utf-8")
     if text == "CLEAR":
@@ -38,11 +41,13 @@ client.username_pw_set(Token,Secret)
 client.connect(Server_ip, port)
 client.loop_start()
 
-# device = "cuda" if torch.cuda.is_available() else "cpu"
 # Load the YOLOv8 model
 model = YOLO('best-n.pt')
-response = requests.get(url='http://0.0.0.0:6969/clearitems')
 
+# clear the cart as a precaution
+response = requests.get(url='http://0.0.0.0:6969/clearitems') 
+
+# get the camera feed from the camera
 cap = cv2.VideoCapture(1)
 
 # Define a line for detection
@@ -86,7 +91,7 @@ while cap.isOpened():
         # Visualize the results on the frame
         annotated_frame = results[0].plot()
 
-        # Optionally, draw the detection line on the frame
+        # Draw the detection line on the frame
         cv2.line(annotated_frame, (line_x_coord, 0), (line_x_coord, frame.shape[0]), (0, 255, 0), 2)
 
         # Display the annotated frame

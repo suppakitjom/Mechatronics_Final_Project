@@ -28,3 +28,10 @@ def update_stock(orders):
             print(f"Item {item_name} not found in stock.")
     print(f"{receipt} dollars in total")
     return receipt
+
+def get_price(item):
+    current_stock = inventory_collection.find_one({"name": item})
+    if current_stock:
+            unit_price = int(current_stock['unit_price'])
+            return unit_price
+    return 0

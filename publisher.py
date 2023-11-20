@@ -40,4 +40,3 @@ time.sleep(1)
 while True:
         data_out = input("Enter your message: ")
         client.publish(Publish_Topic, data_out, retain= True)
-        # print ("Publish.....")
