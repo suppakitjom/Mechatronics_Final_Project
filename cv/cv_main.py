@@ -23,6 +23,10 @@ Secret = "nPKG5CD6ddontJgp8vwv7KAJFNskmGd8"
 
 MqttUser_Pass = {"username":Token,"password":Secret}
 
+# The callback for when the client receives a CONNACK response from the server.
+def on_connect(client, userdata, flags, rc):
+    print("Connected with result code "+str(rc))
+    client.subscribe(Subscribe_Topic)
 
 def on_message(client, userdata, msg):
     '''
@@ -34,6 +38,7 @@ def on_message(client, userdata, msg):
         response = requests.get(url='http://0.0.0.0:6969/clearitems')
 
 client = mqtt.Client(protocol=mqtt.MQTTv311,client_id=Client_ID, clean_session=True)
+client.on_connect = on_connect
 client.on_message = on_message
 
 client.subscribe(Subscribe_Topic)
