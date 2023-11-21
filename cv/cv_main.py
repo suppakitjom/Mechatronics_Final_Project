@@ -23,8 +23,11 @@ Secret = "nPKG5CD6ddontJgp8vwv7KAJFNskmGd8"
 
 MqttUser_Pass = {"username":Token,"password":Secret}
 
-# The callback for when the client receives a CONNACK response from the server.
+
 def on_connect(client, userdata, flags, rc):
+    '''
+    Callback function for when the client initially connects to the server
+    '''
     print("Connected with result code "+str(rc))
     client.subscribe(Subscribe_Topic)
 
@@ -38,8 +41,8 @@ def on_message(client, userdata, msg):
         response = requests.get(url='http://0.0.0.0:6969/clearitems')
 
 client = mqtt.Client(protocol=mqtt.MQTTv311,client_id=Client_ID, clean_session=True)
-client.on_connect = on_connect
-client.on_message = on_message
+client.on_connect = on_connect # links connection event to function
+client.on_message = on_message # links the message event to function
 
 client.subscribe(Subscribe_Topic)
 client.username_pw_set(Token,Secret)
@@ -47,7 +50,8 @@ client.connect(Server_ip, port)
 client.loop_start()
 
 # Load the YOLOv8 model
-model = YOLO('best-n.pt')
+model = YOLO('best-n.pt') # nano model, runs quickest without GPU acceleration
+model = YOLO('best-s.pt') # small model, performs quite well but might be slow with many objects
 
 # clear the cart as a precaution
 response = requests.get(url='http://0.0.0.0:6969/clearitems') 
@@ -88,7 +92,7 @@ while cap.isOpened():
                     crossed_ids.add(track_id)
                     class_counts[class_name] = class_counts.get(class_name, 0) + 1
                     try:
-                        r = requests.post(url='http://0.0.0.0:6969/add',json={"name": f"{class_name}"})
+                        r = requests.post(url='http://0.0.0.0:6969/add',json={"name": f"{class_name}"}) # add item to cart
                     except:
                         print("Error")
                     print(f"Object ID {track_id} ({class_name}) has crossed the line.")

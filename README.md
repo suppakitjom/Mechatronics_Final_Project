@@ -1,10 +1,19 @@
+# Automatic Cashier system
 
-  # mala
+## Description
 
-  Note: Please ensure you have installed <code><a href="https://nodejs.org/en/download/">nodejs</a></code>
+### web application
 
-  To preview and run the project on your device:
-  1) Open project folder in <a href="https://code.visualstudio.com/download">Visual Studio Code</a>
-  2) In the terminal, run `npm install`
-  3) Run `npm start` to view project in browser
-  
+- Displays order summary from the server. Allows user to pay via cash or Thai Promptpay QR code.
+
+### cv/cv_main.py
+
+- main program for the computer vision system, used to get feed from camera and perform object recognition and tracking.
+
+### server.py
+
+- used to run the Flask server, handling the communication between the cv program, webapp, and MQTT broker.
+
+### pi_code.py
+
+- code used on Raspberry Pi, used to control the belt and for MQTT communication.
