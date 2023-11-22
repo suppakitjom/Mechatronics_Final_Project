@@ -1,6 +1,6 @@
 import pymongo
 from pymongo import MongoClient
-conn_str = "mongodb+srv://mechatronics:262A4STw@class.tqoukoo.mongodb.net/"
+from config import conn_str
 client = MongoClient(conn_str)
 
 db = client["sushiro"]

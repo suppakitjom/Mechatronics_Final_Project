@@ -3,7 +3,7 @@ from datetime import datetime
 import time
 import paho.mqtt.publish as publish # pip3 install paho-mqtt
 import paho.mqtt.client as mqtt
-
+from config import pi_Client_ID,pi_Secret,pi_Token
 PUL = LED(9) # PULSE pin
 DIR = LED(10) # DIRECTION pin, off for forward, on for backwards
 ENA = LED(11) # ENABLE pin for motor driver
@@ -86,9 +86,9 @@ Alias = "Laptop"
 Subscribe_Topic = "@msg/Pi/Msg"
 Publish_Topic = "@msg/Laptop/Msg"
 
-Client_ID = "9d0bf5ff-4c52-4c4c-adfd-e46661c31a89"
-Token = "88FiMbPTC4NFjqBcbyCMCzmP1XjT3A27"
-Secret = "sP9y2Tsu23pWsZhL2ZH8SjF1sBdzFPSQ"
+Client_ID = pi_Client_ID
+Token = pi_Token
+Secret = pi_Secret
 
 MqttUser_Pass = {"username":Token,"password":Secret}
 client = mqtt.Client(protocol=mqtt.MQTTv311,client_id=Client_ID, clean_session=True)

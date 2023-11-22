@@ -8,7 +8,7 @@ import time
 import json
 import random
 import ssl
-
+from config import laptop_Client_ID,laptop_Secret,laptop_Token
 port = 1883 # default port
 Server_ip = "broker.netpie.io" 
 
@@ -17,9 +17,9 @@ Alias = "Pi"
 Subscribe_Topic = "@msg/Laptop/Msg"
 Publish_Topic = "@msg/Pi/Msg"
 
-Client_ID = "bfbe9214-872f-4e3b-910a-15dc576ce93d"
-Token = "cndGpgj2Tu8oA8QZvQmsUKRBEfED7vzk"
-Secret = "nPKG5CD6ddontJgp8vwv7KAJFNskmGd8"
+Client_ID = laptop_Client_ID
+Token = laptop_Secret
+Secret = laptop_Token
 
 MqttUser_Pass = {"username":Token,"password":Secret}
 
